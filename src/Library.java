@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class Library {
+	int id;
 	Book[] books;
 	int time;
 	int librosPorDia;

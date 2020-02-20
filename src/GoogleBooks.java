@@ -33,17 +33,20 @@ public class GoogleBooks {
 		else{librerias.add(pLibreria);
 		}
 	}
-	private void DevolverDatos(Queue<Library> pCola) {
-		int Dias= this.MaxDias;
+	public void DevolverDatos(Queue<Library> pCola) {
+		int dias= this.MaxDias;	
+		this.NumeroLibrerias(pCola.size());
+		
 		Library li=pCola.remove();
-		while (!pCola.isEmpty()&& Dias>=0) {
+		
+		while (!pCola.isEmpty()&& dias>=0) {
 			
 			int resta=li.time;
-			Dias=Dias-resta;
-			Book[] hLI=li.getLibrosPosibles(MaxDias);
+			dias=dias-resta;
+			Book[] hLI=li.getLibrosPosibles(dias);
+			this.IdLibrosYNLibros(li.id, hLI.length);
 			li=pCola.remove();
 		}
-		
 	}
 	
 	private void NumeroLibrerias(int nLibreria) {
@@ -68,8 +71,31 @@ public class GoogleBooks {
 	   }
 	}
 	}
-	private void IdLibrosYNLibros() {
+	private void IdLibrosYNLibros(int pIdLibreria, int pNLibros) {
 		
 	}
-
+	private void imprimirLibros(Book[] pLibros){
+		FileWriter fichero = null;
+		PrintWriter pw = null;
+	try
+		{
+	    	fichero = new FileWriter("Escritura.txt");
+	    	pw = new PrintWriter(fichero);
+	    	
+	    	for (int i=0;i<pLibros.length;i++){
+	    		pw.println(" " + pLibros[i].getId());
+	    	}
+	    	
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+	try {
+	   
+	   if (null != fichero)
+	      fichero.close();
+	   } catch (Exception e2) {
+	      e2.printStackTrace();
+	   }
+	}
+	}
 }

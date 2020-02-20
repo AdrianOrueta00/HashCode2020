@@ -16,4 +16,8 @@ public class Book {
 	public int getScore(){
 		return this.score;
 	}
+	
+	public int getId(){
+		return this.id;
+	}
 }
