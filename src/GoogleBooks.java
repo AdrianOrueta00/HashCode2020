@@ -1,8 +1,10 @@
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class GoogleBooks {
 	int MaxDias;
-	HashSet<Book> librosPorExaminar;
+	HashSet <Book>librosPorExaminar;
 	HashSet<Library> librerias;
 	private static GoogleBooks miGoogleBooks;
 	
@@ -31,4 +33,43 @@ public class GoogleBooks {
 		else{librerias.add(pLibreria);
 		}
 	}
+	private void DevolverDatos(Queue<Library> pCola) {
+		int Dias= this.MaxDias;
+		Library li=pCola.remove();
+		while (!pCola.isEmpty()&& Dias>=0) {
+			
+			int resta=li.time;
+			Dias=Dias-resta;
+			Book[] hLI=li.getLibrosPosibles(MaxDias);
+			li=pCola.remove();
+		}
+		
+	}
+	
+	private void NumeroLibrerias(int nLibreria) {
+		FileWriter fichero = null;
+		PrintWriter pw = null;
+	try
+		{
+	    	fichero = new FileWriter("Escritura.txt");
+	    	pw = new PrintWriter(fichero);
+
+	    		pw.println(" " + nLibreria);
+	    	
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+	try {
+	   
+	   if (null != fichero)
+	      fichero.close();
+	   } catch (Exception e2) {
+	      e2.printStackTrace();
+	   }
+	}
+	}
+	private void IdLibrosYNLibros() {
+		
+	}
+
 }
