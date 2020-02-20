@@ -5,7 +5,7 @@ import java.util.*;
 public class GoogleBooks {
 	int MaxDias;
 	HashSet <Book>librosPorExaminar;
-	HashSet<Library> librerias;
+	Library[] librerias;
 	private static GoogleBooks miGoogleBooks;
 	
 	private GoogleBooks () {
@@ -71,5 +71,8 @@ public class GoogleBooks {
 	private void IdLibrosYNLibros() {
 		
 	}
-
+	public void crearLibreria (int nLibrosEscaneados, Book[] libros, int time){
+			new Library(libros ,nLibrosEscaneados ,time);
+			}
+	
 }
